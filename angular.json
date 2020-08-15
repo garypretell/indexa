@@ -121,8 +121,16 @@
               "devServerTarget": "indexa:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "indexa"
+    }
+  },
+  "defaultProject": "indexa",
+  "cli": {
+    "analytics": false
+  }
 }
