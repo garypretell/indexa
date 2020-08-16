@@ -93,8 +93,17 @@ export class AppHeaderComponent implements OnInit, OnDestroy {
     }), takeUntil(this.unsubscribe$)).subscribe();
   }
 
-  goUsuarios() {
-    this.router.navigate(['usuario']);
+  async goUsuarios() {
+    const { uid } = await this.auth.getUser();
+    this.afs.doc(`usuarios/${uid}`).valueChanges().pipe(map((data: any) => {
+      if (data) {
+        const proyecto = data.proyecto;
+        const sede = data.sede;
+        return this.router.navigate(['/proyecto', proyecto.id, 'sede',  sede.id, 'usuarios']);
+      } else {
+        return of(null);
+      }
+    }), takeUntil(this.unsubscribe$)).subscribe();
   }
 
   listado() {

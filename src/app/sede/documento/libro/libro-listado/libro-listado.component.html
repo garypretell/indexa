@@ -6,7 +6,10 @@
       <li class="breadcrumb-item text-primary">
         <a role="button" (click)="goDocumentos()">Documentos</a>
       </li>
-      <li class="breadcrumb-item active" aria-current="page">Libros</li>
+      <li class="breadcrumb-item text-primary">
+        <a role="button" (click)="goLibros()">Libros</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Listado(completo)</li>
     </ol>
     <button class="btn btn-sm btn-success" *ngIf="sede" >
       <strong>{{documento}} - {{ sede.nombre }}</strong>
@@ -22,8 +25,8 @@
           >
             <h3>Libro : {{ libro.numLibro }}</h3>
             <hr />
-            <button class="btn btn-outline-dark btn-sm m-2" (click)="goRegistrar(libro)"  >Registrar</button>
-            <button class="btn btn-outline-secondary btn-sm" (click)="goListado(libro)">Listar</button>
+            <!-- <button class="btn btn-outline-dark btn-sm m-2" (click)="goRegistrar(libro)"  >Registrar</button> -->
+            <button class="btn btn-outline-secondary btn-sm" (click)="goListado(libro)">Registros</button>
             <div class="go-corner" href="#">
               <div class="go-arrow">
                 →

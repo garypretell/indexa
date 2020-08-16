@@ -113,13 +113,13 @@ export class LibroComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   goLibro() {
     if (this.numLibro) {
-      if (this.tipoBusqueda) {
-        this.router.navigate(['/proyecto', this.miproyecto, 'sede', this.misede,
-        'documentos', this.documento, 'libros', this.numLibro, 'registrar']);
-      } else {
+      // if (this.tipoBusqueda) {
+      //   this.router.navigate(['/proyecto', this.miproyecto, 'sede', this.misede,
+      //   'documentos', this.documento, 'libros', this.numLibro, 'registrar']);
+      // } else {
         this.router.navigate(['/proyecto', this.miproyecto, 'sede', this.misede,
         'documentos', this.documento, 'libros', this.numLibro]);
-      }
+      // }
     } else {
       Swal.fire({
         icon: 'error',

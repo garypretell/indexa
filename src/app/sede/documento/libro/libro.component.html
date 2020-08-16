@@ -23,9 +23,9 @@
                   <a role="button" class="shadow card2 text-center">
                     <h3>Libro : {{libro.numLibro}}</h3>
                     <hr>
-                    <button class="btn btn-outline-dark btn-sm m-2" (click)="goRegistrar(libro)" >Registrar</button>
+                    <!-- <button class="btn btn-outline-dark btn-sm m-2" (click)="goRegistrar(libro)" >Registrar</button> -->
                     <button class="btn btn-outline-secondary btn-sm" (click)="goListado(libro)">Partidas</button><br>
-                    <button type="button" class="btn btn-outline-primary btn-sm m-2" (click)="goUpload(libro)"  *ngIf="auth.canDelete(auth.user$ | async)">Subir Imágenes <i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+                    <!-- <button type="button" class="btn btn-outline-primary btn-sm m-2" (click)="goUpload(libro)"  *ngIf="auth.canDelete(auth.user$ | async)">Subir Imágenes <i class="fa fa-cloud-upload" aria-hidden="true"></i></button> -->
                     <div class="go-corner" href="#">
                       <div class="go-arrow">
                         →
@@ -55,14 +55,14 @@
                 </div>
                 
                 <input type="number" id="inputPassword6" class="form-control border border-primary" aria-describedby="passwordHelpInline"  placeholder="Número de Libro" [(ngModel)]="numLibro" [ngModelOptions]="{standalone: true}">
-                <div class="custom-control custom-radio mt-1">
+                <!-- <div class="custom-control custom-radio mt-1">
                   <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" [(ngModel)]="tipoBusqueda" [value]="true">
                   <label class="custom-control-label justify-content-start" for="customRadio1">Registrar una partida </label>
                 </div>
                 <div class="custom-control custom-radio align-content-start">
                   <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" [(ngModel)]="tipoBusqueda" [value]="false">
                   <label class="custom-control-label justify-content-start" for="customRadio2">Mostrar Libro</label>
-                </div>
+                </div> -->
                 <button type="button" class="btn btn-primary mt-3" (click)="goLibro()" ><i class="fa fa-search" aria-hidden="true"> </i> Buscar</button>
               </div>
             </div>

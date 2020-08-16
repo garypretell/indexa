@@ -96,4 +96,8 @@ export class LibroListadoComponent implements OnInit, OnDestroy {
     this.router.navigate(['/proyecto', this.miproyecto, 'sede',
     this.misede, 'documentos', this.documento, 'libros', libro.numLibro]);
   }
+  goLibros() {
+    this.router.navigate(['/proyecto', this.miproyecto, 'sede',
+      this.misede, 'documentos', this.documento, 'libros']);
+  }
 }
