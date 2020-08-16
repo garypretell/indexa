@@ -21,6 +21,7 @@ import { NgxKjuaModule } from 'ngx-kjua';
 import { ImageViewerModule } from 'ng2-image-viewer';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AngularSplitModule } from 'angular-split';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AngularSplitModule } from 'angular-split';
     DragulaModule.forRoot(),
     NgxKjuaModule,
     NgxSpinnerModule,
-    ImageViewerModule
+    ImageViewerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
