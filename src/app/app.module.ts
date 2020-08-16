@@ -11,9 +11,21 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AppHeaderComponent } from './app-header.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { DragulaModule } from 'ng2-dragula';
+import { NgxKjuaModule } from 'ngx-kjua';
+import { ImageViewerModule } from 'ng2-image-viewer';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AngularSplitModule } from 'angular-split';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +36,15 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    NgxPaginationModule,
+    FilterPipeModule,
+    NgxChartsModule,
+    InfiniteScrollModule,
+    AngularSplitModule.forRoot(),
+    DragulaModule.forRoot(),
+    NgxKjuaModule,
+    NgxSpinnerModule,
+    ImageViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
