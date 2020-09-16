@@ -7,13 +7,13 @@
     <button class="btn btn-sm btn-success" *ngIf="sede">
         <strong>{{ sede.nombre }} - {{documento}}</strong>
     </button>
-</div> 
+</div>
 
 <div class="container-fluid">
     <ng-container *ngIf="documento$ | async as documento; else loading">
         <ng-container *ngIf="documento.plantilla; else mensaje">
             <div class="card-body" *ngIf="campos$ | async as temp; else loading">
-                <ng-container >
+                <ng-container>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-9">
@@ -38,7 +38,8 @@
                                                 <th>Items</th>
                                                 <th>Tipo</th>
                                                 <th class="text-center">Es campo para Búsqueda</th>
-                                                <th class="text-center">Visible</th>
+                                                <th class="text-center">Activo?</th>
+                                                <th class="text-center">Visible?</th>
                                                 <th class="text-center">Opciones</th>
                                             </tr>
                                         </thead>
@@ -53,6 +54,7 @@
                                                     <td>{{ x.tipo | uppercase }}</td>
                                                     <td class="text-center">{{ x.busqueda === true ? 'SI' : 'NO' }}</td>
                                                     <td class="text-center">{{ x.estado === true ? 'SI' : 'NO' }}</td>
+                                                    <td class="text-center">{{ x.visible === true ? 'SI' : 'NO' }}</td>
                                                     <td class="text-center">
                                                         <button class="btn btn-sm btn-outline-danger m-1"
                                                             (click)="deleteCampoS(x)">
@@ -219,8 +221,18 @@
                     </div>
                     <div class="row mb-2">
                         <div class="col">
-                            <label for="nivel">Visible:</label>
+                            <label for="nivel">Activo?</label>
                             <select class="form-control" id="estado" name="estado" [(ngModel)]="campotoEditS.estado">
+                                <option selected disabled>Seleccione...</option>
+                                <option [ngValue]="true">SI</option>
+                                <option [ngValue]="false">NO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <label for="nivel">Visible?</label>
+                            <select class="form-control" id="visible" name="visible" [(ngModel)]="campotoEditS.visible">
                                 <option selected disabled>Seleccione...</option>
                                 <option [ngValue]="true">SI</option>
                                 <option [ngValue]="false">NO</option>

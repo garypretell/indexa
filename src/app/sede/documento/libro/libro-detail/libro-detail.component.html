@@ -38,9 +38,9 @@
                         <div dragula="DRAGULA_FACTS" class="w-100">
                           <ng-container *ngSwitchCase="'numerico'">
                             <div class="col mb-3" style="cursor: pointer;">
-                              <label for="{{data.nombre}}">{{data.nombre}}</label>
+                              <label for="{{data.id}}">{{data.nombre}}</label>
                               <input type="number" class="form-control text-uppercase field-focus border border-info"
-                                name="{{data.nombre}}" [(ngModel)]="searchObject[data.nombre]"
+                                name="{{data.id}}" [(ngModel)]="searchObject[data.id]"
                                 (keyup.enter)="keytab($event)" autofocus />
                             </div>
                           </ng-container>
@@ -48,16 +48,16 @@
                             <div class="col mb-3" style="cursor: pointer;">
                               <label for="apellidos">{{data.nombre}}</label>
                               <input type="date" placeholder="dd/mm/yyyy"
-                                class="form-control text-uppercase field-focus" name="{{data.nombre}}"
-                                [(ngModel)]="newObject[data.nombre]" (keyup.enter)="keytab($event)" autofocus />
+                                class="form-control text-uppercase field-focus" name="{{data.id}}"
+                                [(ngModel)]="newObject[data.id]" (keyup.enter)="keytab($event)" autofocus />
                             </div>
                           </ng-container>
                           <ng-container *ngSwitchDefault>
                             <div class="col mb-3" style="cursor: pointer;">
-                              <label for="{{data.nombre}}">{{data.nombre}}</label>
+                              <label for="{{data.id}}">{{data.nombre}}</label>
                               <input type="text" class="form-control text-uppercase field-focus border border-info"
-                                oninput="this.value = this.value.toUpperCase()" name="{{data.nombre}}"
-                                [(ngModel)]="searchObject[data.nombre]" (keyup.enter)="keytab($event)" autofocus />
+                                oninput="this.value = this.value.toUpperCase()" name="{{data.id}}"
+                                [(ngModel)]="searchObject[data.id]" (keyup.enter)="keytab($event)" autofocus />
                             </div>
                           </ng-container>
                         </div>
@@ -157,33 +157,29 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col" *ngFor="let column of campos.campos | filterBy: userFilterF">
+                    <th scope="col" *ngFor="let column of campos.campos | filterBy: userFilterV">
                       {{column.nombre | uppercase}}
                     </th>
                     <th scope="col"  *ngIf="auth.canDelete(auth.user$ | async)">ACCIONES</th>
-                    <th scope="col"  *ngIf="auth.canDelete(auth.user$ | async)">IMAGEN</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr
                     *ngFor="let item of registros$ | async | filterBy: searchObject | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                     <td>{{ 10 * (p -1) + i + 1}} </td>
-                    <td *ngFor="let col of campos.campos | filterBy: userFilterF">
-                      {{item[col.nombre] }}
+                    <td *ngFor="let col of campos.campos | filterBy: userFilterV">
+                      {{item[col.id] }}
                     </td>
                     <td  *ngIf="auth.canDelete(auth.user$ | async)">
-                      <button class="btn btn-outline-primary btn-sm mr-2" (click)="enableEditing($event, item)">
+                      <button class="btn btn-outline-primary btn-sm mb-1" (click)="enableEditing($event, item)">
                         <i class="fa fa-pencil"></i> Editar</button>
 
-                      <button class="btn btn-outline-danger btn-sm mr-2" (click)="deleteRegistro(item)">
+                      <button class="btn btn-outline-danger btn-sm mb-1" (click)="deleteRegistro(item)">
                         <i class="fa fa-trash"></i> Eliminar</button>
 
-                      <button class="btn btn-outline-secondary btn-sm" (click)="printRegistro(item)"
+                      <button class="btn btn-outline-secondary btn-sm mb-1" (click)="printRegistro(item)"
                         (mouseenter)="seleccionar(item)">
                         <i class="fa fa-print" aria-hidden="true"></i> Imprimir</button>
-                    </td>
-                    <td  *ngIf="auth.canDelete(auth.user$ | async)">
-                      <a role="button" class="btn btn-outline-secondary btn-sm" target="_blank" href="{{ item.downloadUrl }}"><i class="fa fa-camera" aria-hidden="true"></i> Imagen</a>
                     </td>
                   </tr>
                 </tbody>
@@ -215,12 +211,12 @@
                       <div class="col-xs-8">
                         <div [ngSwitch]="col.tipo">
                           <div *ngSwitchCase="'numerico'">
-                            <input type="number" class="form-control text-uppercase" [(ngModel)]="editObject[col.nombre]"
+                            <input type="number" class="form-control text-uppercase" [(ngModel)]="editObject[col.id]"
                               [ngModelOptions]="{standalone: true}" />
                           </div>
                           <div *ngSwitchCase="'fecha'">
                             <input type="date" placeholder="dd/mm/yyyy" class="form-control text-uppercase"
-                              [(ngModel)]="editObject[col.nombre]" [ngModelOptions]="{standalone: true}" />
+                              [(ngModel)]="editObject[col.id]" [ngModelOptions]="{standalone: true}" />
                           </div>
                           <div *ngSwitchCase="'imagen'">
                             <input type="file" class="form-control" [(ngModel)]="editObject[col.nombre]"
@@ -229,7 +225,7 @@
                           <div *ngSwitchDefault>
                             <input type="text" enter class="form-control"
                               oninput="this.value = this.value.toUpperCase()" [ngModelOptions]="{standalone: true}"
-                              [(ngModel)]="editObject[col.nombre]" />
+                              [(ngModel)]="editObject[col.id]" />
                           </div>
                         </div>
                       </div>

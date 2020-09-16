@@ -36,9 +36,10 @@
         <as-split direction="horizontal">
             <as-split-area size="20" class="contenedor">
                 <div class="custom-control custom-switch m-2">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1"  [(ngModel)]="checkBoxValue" [ngModelOptions]="{ standalone: true }">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="checkBoxValue"
+                        [ngModelOptions]="{ standalone: true }">
                     <label class="custom-control-label" for="customSwitch1">Registrar con imágen</label>
-                  </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="shadow card bg-primary text-white text-center m-2">
@@ -115,7 +116,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <ng-container *ngFor="let column of campos.campos  | filterBy: userFilterF">
+                                    <ng-container *ngFor="let column of campos.campos  | filterBy: userFilterV">
                                         <th scope="col" *ngIf="column.estado !== 'principal' ">
                                             {{column.nombre | uppercase}}
                                         </th>
@@ -127,8 +128,8 @@
                             <tbody>
                                 <tr *ngFor="let item of registros$ | async; let i = index">
                                     <td>{{ i+1}} </td>
-                                    <ng-container *ngFor="let col of campos.campos | filterBy: userFilterF">
-                                        <td *ngIf="col.estado !== 'principal' ">{{item[col.nombre] }}
+                                    <ng-container *ngFor="let col of campos.campos | filterBy: userFilterV">
+                                        <td *ngIf="col.estado !== 'principal' ">{{item[col.id] }}
                                         </td>
                                     </ng-container>
                                     <td>
@@ -139,7 +140,9 @@
                                             <i class="fa fa-trash"></i> Eliminar</button>
                                     </td>
                                     <td>
-                                        <a role="button" class="btn btn-outline-secondary btn-sm" target="_blank" href="{{ item.downloadUrl }}"><i class="fa fa-camera" aria-hidden="true"></i> Imagen</a>
+                                        <a role="button" class="btn btn-outline-secondary btn-sm" target="_blank"
+                                            href="{{ item.downloadUrl }}"><i class="fa fa-camera"
+                                                aria-hidden="true"></i> Imagen</a>
                                     </td>
                                 </tr>
                             </tbody>

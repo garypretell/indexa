@@ -20,6 +20,7 @@ export class LibroDetailComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject();
   searchObject: any = {};
   userFilterF: any = { estado: 'true' };
+  userFilterV: any = { visible: 'true' };
   newObject: any = {};
   editObject: any = {};
   miproyecto: any;

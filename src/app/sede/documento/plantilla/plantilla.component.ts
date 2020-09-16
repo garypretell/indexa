@@ -201,10 +201,12 @@ export class PlantillaComponent implements OnInit, OnDestroy {
       return alert('Este campo está reservado por el sistema');
     }
     const data: any = {
+      visible: true,
       estado: true,
       busqueda: false,
       tipo: this.addCampoFormS.value.tipo,
       nombre: this.addCampoFormS.value.nombre,
+      id: this.addCampoFormS.value.nombre.replace(/ /g, '')
     };
     await this.afs.doc(`Plantillas/${this.midocumento}`).update({
       campos: firestore.FieldValue.arrayUnion(data)

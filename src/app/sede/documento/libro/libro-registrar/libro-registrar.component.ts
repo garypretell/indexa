@@ -23,6 +23,7 @@ export class LibroRegistrarComponent implements OnInit, OnDestroy {
   editObject: any = {};
   registrotoEdit: any = {};
   userFilterF: any = { estado: 'true' };
+  userFilterV: any = { visible: 'true' };
   p: any;
   miproyecto: any;
   micodigo: any;

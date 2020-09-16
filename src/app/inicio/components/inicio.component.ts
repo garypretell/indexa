@@ -92,13 +92,6 @@ export class InicioComponent implements OnInit, OnDestroy {
             this.sede = data.sede;
             if (this.proyecto) {
               this.sede$ = await this.sedeService.getSede(this.proyecto.id);
-              this.midata = this.afs
-                .collection('Documentos', (ref) =>
-                  ref
-                    .where('proyecto', '==', this.proyecto.id)
-                    .where('estado', '==', 'proyecto')
-                )
-                .valueChanges({ idField: 'ids' });
               this.midata = this.afs.collection('Documentos', ref => ref.where('sede', '==', this.sede.id)
                 .orderBy('createdAt', 'desc')).valueChanges({ idField: 'ids' });
               return this.sede;

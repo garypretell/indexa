@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a #proyectosLink routerLinkActive="active" class="nav-link more" [routerLink]="['/Chat']"
-          *ngIf="auth.canEdit(auth.user$ | async)">
+          *ngIf="auth.canDelete(auth.user$ | async)" >
           Chat</a>
       </li>
       <li class="nav-item" *ngIf="auth.canEdit(auth.user$ | async)">
@@ -18,7 +18,7 @@
       </li>
       <li class="nav-item" *ngIf="auth.canDelete(auth.user$ | async)">
         <a #proyectosLink routerLinkActive="active" class="nav-link more" (click)="goUsuarios()">
-          Usuarios</a>
+          Mis Usuarios</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

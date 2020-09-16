@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RequireUnauthGuard, EditorGuard, AdminGuard } from './auth/guards';
+import { RequireUnauthGuard, EditorGuard, AdminGuard, SuperGuard, RequireAuthGuard, AuthGuard } from './auth/guards';
 import { SedeResolverGuard } from './sede/sede-resolver.guard';
 
 
@@ -12,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'Home',
-    loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioModule)
+    loadChildren: () => import('./inicio/inicio.module').then(m => m.InicioModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'registrar',
@@ -24,7 +25,8 @@ const routes: Routes = [
   },
   {
     path: 'proyecto',
-    loadChildren: () => import('./proyecto/proyecto.module').then(m => m.ProyectoModule)
+    loadChildren: () => import('./proyecto/proyecto.module').then(m => m.ProyectoModule),
+    canActivate: [SuperGuard]
   },
   {
     path: 'proyecto/:p/sede',
@@ -36,7 +38,6 @@ const routes: Routes = [
     path: 'Chat',
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule),
     canActivate: [AdminGuard],
-    // resolve: { chats: ChatResolverGuard}
   },
   {
     path: 'chats/:id',

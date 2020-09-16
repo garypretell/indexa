@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 import { Observable, of, from, BehaviorSubject } from 'rxjs';
-import { switchMap, map, first } from 'rxjs/operators';
+import { switchMap, map, first, shareReplay } from 'rxjs/operators';
 import { User } from './user';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, firestore } from 'firebase/app';
@@ -82,7 +82,7 @@ export class AuthService {
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`usuarios/${user.uid}`);
     const data: any = {
-      lastSesion: firebase.firestore.FieldValue.serverTimestamp(),
+      lastSesion: Date.now(),
       uid: user.uid,
       email: user.email,
       emailVerified: user.emailVerified,

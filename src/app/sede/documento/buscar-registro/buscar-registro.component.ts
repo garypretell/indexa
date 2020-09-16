@@ -21,7 +21,8 @@ export class BuscarRegistroComponent implements OnInit, OnDestroy {
   @ViewChild(ImprimirRegistroComponent) childImprimir: ImprimirRegistroComponent;
   @ViewChild('myModalEditS') myModalEditS: ElementRef;
   private unsubscribe$ = new Subject();
-  userFilterF: any = { estado: 'true' };
+  userFilterE: any = { estado: 'true' };
+  userFilterV: any = { visible: 'true' };
   searchObject: any = {};
   miproyecto: any;
   micodigo: any;
@@ -172,7 +173,5 @@ export class BuscarRegistroComponent implements OnInit, OnDestroy {
   goSede() {
     this.router.navigate(['/proyecto', this.miproyecto, 'sede', this.misede]);
   }
-
-  
 
 }

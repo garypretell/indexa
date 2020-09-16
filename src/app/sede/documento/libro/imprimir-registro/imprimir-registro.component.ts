@@ -36,7 +36,7 @@ export class ImprimirRegistroComponent implements OnInit, OnDestroy {
       ref.getDownloadURL()
         .pipe(switchMap((m: string) => {
           this.url = m.replace('https://firebasestorage.googleapis.com/', '');
-          return this.http.get(this.url, { responseType: 'text' }).pipe(map(data => {
+          return this.http.get(m, {  responseType: 'text' }).pipe(map(data => {
             this.myTemplate = data.replace(/{{([^}}]+)?}}/g, ($1, $2) =>
               $2.split('.').reduce((p, c) => p ? p[c] : '', this));
           }));
